@@ -11,7 +11,7 @@ const port = process.env;
 
 app.use("/api", require("./routes"));
 
-app.listen(port, () => {
+app.listen({ port }, () => {
   console.log(`API Pokemon PI is ready in port ${PORT}`);
 });
 
