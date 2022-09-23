@@ -1,1 +1,5 @@
+#archivos de instalacion
 node_modules/
+
+#variables de enterno
+.env
