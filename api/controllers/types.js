@@ -2,27 +2,28 @@ const axios = require("axios");
 // const fetch = require('node-fetch');
 const { typeModel } = require("../models");
 
-const showTypesDb = async(req,res) =>{
-    const result = await typeModel.find({})
+const showTypesDb = async (req, res) => {
+  const result = await typeModel.find({});
 
-    res.send(result)
-}
+  res.send(result);
+};
+//uwu
 
 const saveTypeDb = async (req, res) => {
   try {
     let uwu = req.body;
 
-    console.log(uwu)
+    console.log(uwu);
     const result = await typeModel.create(uwu);
-    
-    res.send(result)
+
+    res.send(result);
     // res.send({ msg: "Se ven los tipos" });
   } catch (error) {
     console.log(error.message);
   }
 };
 
-const deleteType = async (req,res) =>{
+const deleteType = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -31,6 +32,6 @@ const deleteType = async (req,res) =>{
   } catch (e) {
     return res.json(e.message);
   }
-}
+};
 
-module.exports = { saveTypeDb ,showTypesDb,deleteType};
+module.exports = { saveTypeDb, showTypesDb, deleteType };
