@@ -7,11 +7,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env;
+const port = process.env;
 
 app.use("/api", require("./routes"));
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`API Pokemon PI is ready in port ${PORT}`);
 });
 
