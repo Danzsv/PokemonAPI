@@ -5,7 +5,6 @@ const PokemonSchema = new Schema(
   {
     pokedexId: {
       type: Number,
-      unique: true,
     },
     name: {
       type: String,

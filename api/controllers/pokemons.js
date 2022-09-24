@@ -1,13 +1,16 @@
-const { pokemonModel } = require("../models");
+const { pokemonModel, typeModel } = require("../models");
 
 const createPokemon = async (req, res) => {
   try {
-    let uwu = req.body;
+    let info = req.body;
+    const typesDb = await typeModel.find({});
+    const type1 = typesDb.filter((e) => e.name === info.firstType[0]);
+    const type2 = typesDb.filter((e) => e.name === info.secondType[0]);
+    const types = [...type1, ...type2];
+    const newBody = { ...info, types };
 
-    // console.log(uwu);
-    const result = await pokemonModel.create(uwu);
-
-    res.send(result);
+    const result = await pokemonModel.create(newBody);
+    return res.send(result);
   } catch (error) {
     console.log(error.message);
   }
@@ -28,8 +31,8 @@ const allPokemonDB = async (req, res) => {
     });
 
     if (name) {
-      let pokemonName = sortResult.filter(
-        (e) => e.name.toLowerCase() === name.trim().toLowerCase()
+      let pokemonName = sortResult.filter((e) =>
+        e.name.toLowerCase().includes(name.trim().toLowerCase())
       );
       if (pokemonName.length === 0) {
         res.status(200).send(["No existe el pokemon"]);
