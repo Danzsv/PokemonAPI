@@ -7,7 +7,8 @@ const createPokemon = async (req, res) => {
     const type1 = typesDb.filter((e) => e.name === info.firstType[0]);
     const type2 = typesDb.filter((e) => e.name === info.secondType[0]);
     const types = [...type1, ...type2];
-    const newBody = { ...info, types };
+    const random = Math.random() * 100000;
+    const newBody = { ...info, types, pokedexId: random };
 
     const result = await pokemonModel.create(newBody);
     return res.send(result);
