@@ -48,6 +48,7 @@ const searchPokeById = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await pokemonModel.findById(id).populate("types");
+    console.log(result.custom);
     if (result.custom === true) {
       return res.send(result);
     } else {
