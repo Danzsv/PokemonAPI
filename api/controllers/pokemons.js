@@ -47,15 +47,17 @@ const allPokemonDB = async (req, res) => {
 const searchPokeById = async (req, res) => {
   try {
     const { id } = req.params;
-    const number = Number(id);
-    if (typeof number == "number") {
+    const result = await pokemonModel.findById(id).populate("types");
+    if (result.custom === true) {
+      return res.send(result);
+    } else {
+      const number = Number(id);
       const srchPokedexId = await pokemonModel
-        .findOne({ pokedexId: id })
+        .findOne({ pokedexId: number })
         .populate("types");
 
       return res.send(srchPokedexId);
     }
-    const result = await pokemonModel.findById(id).populate("types");
     res.send(result);
   } catch (error) {
     console.log(error.message);
