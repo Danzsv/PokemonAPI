@@ -47,14 +47,14 @@ const allPokemonDB = async (req, res) => {
 const searchPokeById = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await pokemonModel.findById(id).populate("types");
-    console.log(result.custom);
-    if (result.custom === true) {
+
+    if (id.length > 6) {
+      const result = await pokemonModel.findById(id).populate("types");
+      console.log(result);
       return res.send(result);
     } else {
-      const number = Number(id);
       const srchPokedexId = await pokemonModel
-        .findOne({ pokedexId: number })
+        .findOne({ pokedexId: id })
         .populate("types");
 
       return res.send(srchPokedexId);
