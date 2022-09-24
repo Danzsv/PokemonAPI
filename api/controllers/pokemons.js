@@ -53,11 +53,10 @@ const searchPokeById = async (req, res) => {
         .findOne({ pokedexId: id })
         .populate("types");
 
-      res.send(srchPokedexId);
-    } else {
-      const result = await pokemonModel.findById(id).populate("types");
-      res.send(result);
+      return res.send(srchPokedexId);
     }
+    const result = await pokemonModel.findById(id).populate("types");
+    res.send(result);
   } catch (error) {
     console.log(error.message);
   }
