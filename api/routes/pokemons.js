@@ -2,20 +2,22 @@ const express = require("express");
 
 const router = express.Router();
 
-const {getApiPokemon} = require('../utils/getDataPokemon')
-const {createPokemon,allPokemonDB,searchPokeById,deletePoke} = require('../controllers/pokemons')
+const { getApiPokemon } = require("../utils/getDataPokemon");
+const {
+  createPokemon,
+  allPokemonDB,
+  searchPokeById,
+  deletePoke,
+} = require("../controllers/pokemons");
 
+router.post("/", createPokemon);
 
+router.get("/", allPokemonDB);
 
-router.post('/',createPokemon)
+router.get("/:id", searchPokeById);
 
-router.get('/',allPokemonDB)
+router.delete("/:id", deletePoke);
 
-router.get('/:id',searchPokeById)
+router.post("/apiToDb", getApiPokemon, createPokemon);
 
-router.delete('/:id',deletePoke)
-
-router.post ('/apiToDb',getApiPokemon,createPokemon)
-
-
-module.exports = router
+module.exports = router;

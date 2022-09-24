@@ -5,7 +5,7 @@ const PokemonSchema = new Schema(
   {
     pokedexId: {
       type: Number,
-      unique: true,     
+      unique: true,
     },
     name: {
       type: String,
@@ -46,6 +46,10 @@ const PokemonSchema = new Schema(
         ref: "Type",
       },
     ],
+    custom: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
