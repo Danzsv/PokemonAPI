@@ -53,7 +53,7 @@ const searchPokeById = async (req, res) => {
 
     if (id.length > 6) {
       const result = await pokemonModel.findById(id).populate("types");
-      console.log(result);
+      // console.log(result);
       return res.send(result);
     } else {
       const srchPokedexId = await pokemonModel
