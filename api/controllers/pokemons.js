@@ -63,7 +63,7 @@ const searchPokeById = async (req, res) => {
 
       return res.send(srchPokedexId);
     }
-    res.send(result);
+    // res.send(result);
   } catch (error) {
     console.log(error.message);
   }

@@ -4,6 +4,7 @@ const { typeModel } = require("../models");
 
 const showTypesDb = async (req, res) => {
   const result = await typeModel.find({});
+  await typeModel.updateOne;
 
   res.send(result);
 };

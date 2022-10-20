@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
+    "build": "echo 'Building... (not actually doing something,but usually I would)'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
